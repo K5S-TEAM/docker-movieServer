@@ -87,7 +87,7 @@
 
         .search_button{
             padding: 0 !important;
-            background-color: #888F !important;
+            background-color: transparent;
             width: 30px !important;
             height: 30px !important;
             border-radius: 7px !important;
@@ -145,7 +145,7 @@
 <body style="background-color:#2c2c2c">
 <nav class="navbar navbar-expand-md navbar-light bg-dark" style="position:sticky; top:0px; z-index:1;">
 
-    <a  href="https://k5smovie.ga/" style="text-decoration: none;">
+    <a  href="http://54.180.3.74/" style="text-decoration: none;">
         <ul class="navbar-nav" style="align-items: center;">
             <img src="https://k5s-member-convenience.s3.ap-northeast-2.amazonaws.com/common/k5s-icon.png" width="40" height="40" style="border: 0;" class="mx-2">
             <label class="text-light fw-bold me-3" style="font-size: 2rem;">k5sMovie</label>
@@ -158,13 +158,13 @@
         </li>
     </ul>
 
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" style="width: 500px;">
         <div class="srch_form autocomplete" style="width: 300px;">
-            <input id="autoInput" placeholder="Autocomplete Search..." style="border-radius: 7px; width: inherit; display: none;">
+            <input id="autoInput" placeholder="원하는 영화를 입력하세요..." style="border-radius: 7px; width: inherit;">
         </div>
 
         <button class="search_button" id="search">
-            <img src="https://hotmovie.s3.ap-northeast-2.amazonaws.com/img/search-icon.png" style="width:25px; height:25px ">
+            <img src="https://k5s-movie.s3.ap-northeast-2.amazonaws.com/common/search-icon.png" style="width:30px; height:30px ">
         </button>
     </ul>
 
@@ -173,7 +173,7 @@
             <label class="nav-link text-light fw-bold" style="font-size: 1.2rem;border-left: solid 0.1rem #fff;" th:text="${memberName}+' 님'"></label>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light font-weight-bold" href="https://k5smovie.ga/member/my-page" style="font-size: 1.2rem;
+            <a class="nav-link text-light font-weight-bold" href="http://54.180.3.74/member/my-page" style="font-size: 1.2rem;
 border-left: solid 0.1rem #fff;">My Page</a>
         </li>
         <li class="nav-item pe-auto">
@@ -184,7 +184,7 @@ border-left: solid 0.1rem #fff;">Logout</a>
 
     <ul th:unless="${memberName != null}" class="nav justify-content-end ms-auto">
         <li class="nav-item pe-auto">
-            <a class="nav-link active" aria-current="page" href="https://k5smovie.ga/auth/login" style="font-size: 1.2rem;
+            <a class="nav-link active" aria-current="page" href="http://54.180.3.74/auth/login" style="font-size: 1.2rem;
 border-left: solid 0.1rem #fff;">Login</a>
         </li>
     </ul>
@@ -194,7 +194,7 @@ border-left: solid 0.1rem #fff;">Login</a>
 <div class = "movie_wrap">
     <div class = "movie" th:each="movie : ${movies}">
         <div th:onclick="'location.href=\'/movies/'+${movie.code}+'\''">
-            <img th:src = ${movie.img} style="border: solid 0.5px black;width: 228px; height: auto;">
+            <img th:src = |/movies/@{${movie.img}}| style="border: solid 0.5px black;width: 228px; height: auto;">
         </div>
         <div class = "movie_info">
             <p th:text=${movie.title}></p>

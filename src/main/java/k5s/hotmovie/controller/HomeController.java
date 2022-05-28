@@ -8,7 +8,7 @@ public class HomeController {
 
 //    @GetMapping("/")
 //    public String home(){
-////        return "redirect:" + "https://k5smovie.ga" + "/movies";
+////        return "redirect:" + "http://54.180.3.74" + "/movies";
 //        return "movies/movietoday";
 //    }
 

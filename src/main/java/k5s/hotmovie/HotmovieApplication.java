@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HotmovieApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(HotmovieApplication.class, args);
 	}
 

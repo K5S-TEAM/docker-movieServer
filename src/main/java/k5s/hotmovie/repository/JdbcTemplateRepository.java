@@ -16,32 +16,32 @@ public class JdbcTemplateRepository implements MovieRepository{
 
     @Override
     public List<HotMovie> findByCode(Long code) {
-        return jdbcTemplate.query("select * from mv_table where code = ?", movieRowMapper(), code);
+        return jdbcTemplate.query("select * from movie where code = ?", movieRowMapper(), code);
     }
     @Override
     public List<HotMovie> findMovieList() {
-        return jdbcTemplate.query("select title, code from mv_table", movieListRowMapper());
+        return jdbcTemplate.query("select title, code from movie", movieListRowMapper());
     }
 
     @Override
     public List<HotMovie> findAll() {
-        return jdbcTemplate.query("select * from mv_table", movieRowMapper());
+        return jdbcTemplate.query("select * from movie", movieRowMapper());
     }
 
     @Override
     public List<HotMovie> findRecentUpdate() {
-        return jdbcTemplate.query("select * from mv_table ORDER BY code DESC LIMIT 5", movieRowMapper());
+        return jdbcTemplate.query("select * from movie ORDER BY code DESC LIMIT 5", movieRowMapper());
     }
 
     @Override
     public List<HotMovie> findWithPage(int page) {
         int row = 12 * (page - 1);
-        return jdbcTemplate.query("select * from mv_table LIMIT 12 OFFSET ?", movieRowMapper(), row);
+        return jdbcTemplate.query("select * from movie LIMIT 12 OFFSET ?", movieRowMapper(), row);
     }
 
     @Override
     public void updateMovieScore(Long code, Double score){
-        jdbcTemplate.update("update mv_table set score = ? where code = ?",score, code);
+        jdbcTemplate.update("update movie set score = ? where code = ?",score, code);
     }
 
     private RowMapper<HotMovie> movieRowMapper() {

@@ -2,6 +2,7 @@ package k5s.hotmovie.controller;
 
 import k5s.hotmovie.domain.HotMovie;
 import k5s.hotmovie.dto.AuthenticationResponseDto;
+import k5s.hotmovie.error.InvalidAuthenticationException;
 import k5s.hotmovie.service.AuthService;
 import k5s.hotmovie.service.MovieService;
 
@@ -11,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Slf4j
@@ -137,5 +141,15 @@ public class HotMovieController {
     public void logout(@CookieValue(value = "accessToken", required = false) String accessToken) {
 //        System.out.println("로그아웃 함수에서 토큰값 : " + accessToken);
         authService.requestLogout(accessToken);
+    }
+
+    //인증서버에게 로그아웃을 요청했지만 인증서버와 연결이 끊키거나 redis중단됐을경우
+    @ExceptionHandler
+    public void invalidAuthenticationExceptionHandler(InvalidAuthenticationException e,
+                                                        HttpServletResponse response) {
+        Cookie myCookie = new Cookie("accessToken", null);
+        myCookie.setMaxAge(0);
+        myCookie.setPath("/");
+        response.addCookie(myCookie);
     }
 }

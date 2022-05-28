@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>k5smovie-MovieToday</title>
+    <title>k5smovie-MovieTodays</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 
@@ -18,7 +18,7 @@
     }
     .search_button{
             padding: 0 !important;
-            background-color: #888F !important;
+            background-color: transparent;
             width: 30px !important;
             height: 30px !important;
             border-radius: 7px !important;
@@ -74,7 +74,7 @@
 	.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
 	.section .slidelist > li > a {display:block;position:relative;}
 	.section .slidelist > li > a img {width:100%;}
-	.section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
+	.section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:30px;cursor:pointer;}
 	.section .slidelist .textbox {position:absolute;z-index:1;top:90%;left:80%;transform:translate(-50%,-50%);line-height:1.6;text-align:center;}
 	.section .slidelist .textbox p {font-size:45px;color:#fff;;transform:translateY(100px);transition:all .8s;}
 	.section .slidelist .textbox2 {position:absolute;z-index:1;top:90%;left:93%;transform:translate(-50%,-50%);line-height:1.6;text-align:center;}
@@ -115,8 +115,8 @@
 
 	/* 좌,우 슬라이드 버튼 */
 	.slide-control > div {display:none;}
-	.section .left {left:-30px;background:url('https://hotmovie.s3.ap-northeast-2.amazonaws.com/img/left.png') center center / 100% no-repeat;}
-	.section .right {right:-30px;background:url('https://hotmovie.s3.ap-northeast-2.amazonaws.com/img/right.png') center center / 100% no-repeat;}
+	.section .left {left:10px;background:url('https://k5s-movie.s3.ap-northeast-2.amazonaws.com/common/left.png') center center / 100% no-repeat;}
+	.section .right {right:10px;background:url('https://k5s-movie.s3.ap-northeast-2.amazonaws.com/common/right.png') center center / 100% no-repeat;}
 	.section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {display:block;}
 	.section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {display:block;}
 	.section input[id="slide03"]:checked ~ .slidewrap .slide-control > div:nth-child(3) {display:block;}
@@ -138,7 +138,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-dark" style="position:sticky; top:0px; z-index:1;">
 
-    <a  href="https://k5smovie.ga/" style="text-decoration: none;">
+    <a  href="http://54.180.3.74/" style="text-decoration: none;">
         <ul class="navbar-nav" style="align-items: center;">
             <img src="https://k5s-member-convenience.s3.ap-northeast-2.amazonaws.com/common/k5s-icon.png" width="40" height="40" style="border: 0;" class="mx-2">
             <label class="text-light fw-bold me-3" style="font-size: 2rem;">k5sMovie</label>
@@ -151,13 +151,13 @@
         </li>
     </ul>
 
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" style="width: 500px;">
         <div class="srch_form autocomplete" style="width: 300px;">
-            <input id="autoInput" placeholder="Autocomplete Search..." style="border-radius: 7px; width: inherit; display: none;">
+            <input id="autoInput" placeholder="원하는 영화를 입력하세요..." style="border-radius: 7px; width: inherit;">
         </div>
 
         <button class="search_button" id="search">
-            <img src="https://hotmovie.s3.ap-northeast-2.amazonaws.com/img/search-icon.png" style="width:25px; height:25px ">
+            <img src="https://k5s-movie.s3.ap-northeast-2.amazonaws.com/common/search-icon.png" style="width:30px; height:30px ">
         </button>
     </ul>
 
@@ -166,7 +166,7 @@
             <label class="nav-link text-light fw-bold" style="font-size: 1.2rem;border-left: solid 0.1rem #fff;" th:text="${memberName}+' 님'"></label>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light font-weight-bold" href="https://k5smovie.ga/member/my-page" style="font-size: 1.2rem;
+            <a class="nav-link text-light font-weight-bold" href="http://54.180.3.74/member/my-page" style="font-size: 1.2rem;
     border-left: solid 0.1rem #fff;">My Page</a>
         </li>
         <li class="nav-item pe-auto">
@@ -177,7 +177,7 @@
 
     <ul th:unless="${memberName != null}" class="nav justify-content-end ms-auto">
         <li class="nav-item pe-auto">
-            <a class="nav-link active" aria-current="page" href="https://k5smovie.ga/auth/login" style="font-size: 1.2rem;
+            <a class="nav-link active" aria-current="page" href="http://54.180.3.74/auth/login" style="font-size: 1.2rem;
     border-left: solid 0.1rem #fff;">Login</a>
         </li>
     </ul>
@@ -204,7 +204,7 @@
                     <div class="textbox2">
                         <p style="color:#c10013; margin-bottom: 0;">&nbsp;♥</p>
                     </div>
-                    <img th:onclick="'location.href=\'/movies/'+${movie.code}+'\''" th:src=${movie.img} >
+                    <img th:onclick="'location.href=\'/movies/'+${movie.code}+'\''" th:src=|/movies/${movie.img}| >
                 </a>
             </li>
             <!-- 좌,우 슬라이드 버튼 -->

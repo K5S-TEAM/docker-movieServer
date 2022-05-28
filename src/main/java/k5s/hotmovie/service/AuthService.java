@@ -15,11 +15,11 @@ import reactor.core.publisher.Mono;
 @Service
 public class AuthService {
 
-//    private final String authServerUrl = "http://13.209.76.94:8080";
-//    private final String memberConvenienceServerUrl = "http://54.180.106.16:8081";
+    private final String authServerUrl = "http://54.180.3.74:8083";
+    private final String memberConvenienceServerUrl = "http://54.180.106.16:8081";
 
-    private final String authServerUrl = "k5smovie-auth-svc.default.svc.cluster.local";
-    private final String memberConvenienceServerUrl = "k5smovie-member-convenience-svc.default.svc.cluster.local";
+    //private final String authServerUrl = "k5smovie-auth-svc.default.svc.cluster.local";
+    //private final String memberConvenienceServerUrl = "k5smovie-member-convenience-svc.default.svc.cluster.local";
 
     @Transactional
     public AuthenticationResponseDto requestAuthentication(String accessToken) {

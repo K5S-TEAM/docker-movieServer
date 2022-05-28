@@ -24,15 +24,15 @@
         }
         button{
           font-family: Georgia, "Malgun Gothic", serif !important;
-          background-color: #000000 !important;
+          background-color: transparent;
           border:1px solid #6c757d !important;
-          color: #8398ab !important;
+          color: transparent;
           border-radius: 1rem !important;
           padding: 0.5rem 0.5rem !important;
         }
         .search_button{
             padding: 0 !important;
-            background-color: #888F !important;
+            background-color: transparent;
             width: 30px !important;
             height: 30px !important;
             border-radius: 7px !important;
@@ -128,7 +128,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-dark" style="position:sticky; top:0px; z-index:1;">
 
-    <a  href="https://k5smovie.ga/" style="text-decoration: none;">
+    <a  href="http://54.180.3.74/" style="text-decoration: none;">
         <ul class="navbar-nav" style="align-items: center;">
             <img src="https://k5s-member-convenience.s3.ap-northeast-2.amazonaws.com/common/k5s-icon.png" width="40" height="40" style="border: 0;" class="mx-2">
             <label class="text-light fw-bold me-3" style="font-size: 2rem;">k5sMovie</label>
@@ -141,13 +141,13 @@
         </li>
     </ul>
 
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" style="width: 500px;">
         <div class="srch_form autocomplete" style="width: 300px;">
-            <input id="autoInput" placeholder="Autocomplete Search..." style="border-radius: 7px; width: inherit; display: none;">
+            <input id="autoInput" placeholder="원하는 영화를 입력하세요..." style="border-radius: 7px; width: inherit;">
         </div>
 
         <button class="search_button" id="search">
-            <img src="https://hotmovie.s3.ap-northeast-2.amazonaws.com/img/search-icon.png" style="width:25px; height:25px ">
+            <img src="https://k5s-movie.s3.ap-northeast-2.amazonaws.com/common/search-icon.png" style="width:30px; height:30px ">
         </button>
     </ul>
 
@@ -156,7 +156,7 @@
             <label class="nav-link text-light fw-bold" style="font-size: 1.2rem;border-left: solid 0.1rem #fff;" th:text="${memberName}+' 님'"></label>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light font-weight-bold" href="https://k5smovie.ga/member/my-page" style="font-size: 1.2rem;
+            <a class="nav-link text-light font-weight-bold" href="http://54.180.3.74/member/my-page" style="font-size: 1.2rem;
     border-left: solid 0.1rem #fff;">My Page</a>
         </li>
         <li class="nav-item pe-auto">
@@ -167,7 +167,7 @@
 
     <ul th:unless="${memberName != null}" class="nav justify-content-end ms-auto">
         <li class="nav-item pe-auto">
-            <a class="nav-link active" aria-current="page" href="https://k5smovie.ga/auth/login" style="font-size: 1.2rem;
+            <a class="nav-link active" aria-current="page" href="http://54.180.3.74/auth/login" style="font-size: 1.2rem;
     border-left: solid 0.1rem #fff;">Login</a>
         </li>
     </ul>
@@ -180,7 +180,7 @@
 <div th:each="movie : ${movies}" style="border-top: solid 0.1rem #ffff; padding-top: 20px;">
     <div class="wrapper">
         <div class="mv_img">
-            <img th:src="${movie.img}">
+            <img th:src="|/movies/@{${movie.img}}|"/>
         </div>
         <div class="mv_info">
             <div>
@@ -200,7 +200,7 @@
                 <text style="font-size: 30px;" th:text="${#numbers.formatDecimal(movie.score,1,1)}"></text>
                 <text style="font-size: 30px; color:#c10013;">♥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
                 <button type="button" class="btn btn-secondary btn-lg" style="float: right;"
-                        th:onclick="'location.href=\'https://k5smovie.ga/movies/'+${movie.code}+'/reviews\''">리뷰 보기</button><br>
+                        th:onclick="'location.href=\'http://54.180.3.74/movies/'+${movie.code}+'/reviews\''">리뷰 보기</button><br>
                 <hr style="color:white; size:3px">
             </div>
         </div>

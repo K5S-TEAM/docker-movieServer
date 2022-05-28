@@ -59,6 +59,6 @@ public class ChatRoomController {
 
     @ExceptionHandler
     public String invalidAuthenticationExceptionHandler(InvalidAuthenticationException e) {
-        return "redirect:" + "https://k5smovie.ga" + "/auth/login";
+        return "redirect:" + "http://54.180.3.74" + "/auth/login";
     }
 }
