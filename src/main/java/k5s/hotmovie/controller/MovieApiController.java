@@ -34,6 +34,19 @@ public class MovieApiController {
         }
     }
 
+    @GetMapping("/movie/{id}")
+    public ResponseEntity getMovieNames(@PathVariable Long id) {
+        List<HotMovie> result = movieService.findOne(id);
+
+        if (result.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(null);
+        } else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new MovieNameResponseDto(result.get(0).getTitle()));
+        }
+    }
+
     /**
      * @param movieCode
      * @param dto
